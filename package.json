@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-chakra-types": "npx @chakra-ui/cli typegen ./app/styles/theme.ts"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.19.2",
