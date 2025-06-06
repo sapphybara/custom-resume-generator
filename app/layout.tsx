@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import Navbar from "@/components/ui/navbar";
 import { lato, merriweatherSans } from "@/styles/fonts";
 
 export const metadata: Metadata = {
@@ -15,14 +15,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${merriweatherSans.variable} ${lato.variable}`}>
+    <html
+      className="flex justify-center **:max-w-[1200px]"
+      lang="en"
+      suppressHydrationWarning
+    >
+      <body
+        className={`${merriweatherSans.variable} ${lato.variable} h-lvh flex flex-col w-full`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
