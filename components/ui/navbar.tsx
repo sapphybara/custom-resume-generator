@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -7,6 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "./navigation-menu";
+import ColorModeToggle from "./color-mode-toggle";
 
 const Navbar = () => (
   <div className="flex justify-between w-full py-2 items-center">
@@ -36,6 +39,7 @@ const Navbar = () => (
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
+      <ColorModeToggle />
     </NavigationMenu>
   </div>
 );
