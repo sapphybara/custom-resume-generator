@@ -20,6 +20,7 @@ interface ResumeData {
   location: string;
   website: string;
   linkedin: string;
+  pronouns?: string;
   summary: string;
   skills: string;
   experiences: Experience[];
