@@ -20,98 +20,102 @@ interface FormInputProps {
   required?: boolean;
 }
 
-const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
-  (
-    { name, label, placeholder, type = "text", className, required, ...props },
-    ref
-  ) => {
-    const form = useFormContext();
+const FormInput = ({
+  name,
+  label,
+  placeholder,
+  type = "text",
+  className,
+  required,
+  ...props
+}: FormInputProps) => {
+  const form = useFormContext();
 
-    return (
-      <FormField
-        control={form.control}
-        name={name}
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel
-              htmlFor={name}
-              className={
-                required ? "after:content-['*'] after:text-red-500 gap-1" : ""
-              }
-            >
-              {label}
-            </FormLabel>
-            <FormControl>
-              <Input
-                id={name}
-                type={type}
-                placeholder={placeholder}
-                className={className}
-                required={required}
-                {...field}
-                {...props}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-    );
-  }
-);
-FormInput.displayName = "FormInput";
+  return (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel
+            htmlFor={name}
+            className={
+              required ? "after:content-['*'] after:text-red-500 gap-1" : ""
+            }
+          >
+            {label}
+          </FormLabel>
+          <FormControl>
+            <Input
+              id={name}
+              type={type}
+              placeholder={placeholder}
+              className={className}
+              required={required}
+              {...field}
+              {...props}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+};
 
 interface PrefixInputProps extends FormInputProps {
   prefix: string;
 }
 
-const PrefixInput = React.forwardRef<HTMLInputElement, PrefixInputProps>(
-  (
-    { name, label, placeholder, prefix, className, required, ...props },
-    ref
-  ) => {
-    const form = useFormContext();
-    // Calculate padding based on prefix length
-    const paddingClass = prefix === "linkedin.com/in/" ? "pl-28" : "pl-20";
+const PrefixInput = ({
+  name,
+  label,
+  placeholder,
+  prefix,
+  className,
+  required,
+  ...props
+}: PrefixInputProps) => {
+  const form = useFormContext();
+  // Calculate padding based on prefix length
+  const paddingClass = prefix === "linkedin.com/in/" ? "pl-28" : "pl-20";
 
-    return (
-      <FormField
-        control={form.control}
-        name={name}
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel
-              htmlFor={name}
-              className={
-                required
-                  ? "after:content-['*'] after:text-red-500 after:ml-1"
-                  : ""
-              }
-            >
-              {label}
-            </FormLabel>
-            <FormControl>
-              <div className="relative">
-                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm select-none">
-                  {prefix}
-                </span>
-                <Input
-                  id={name}
-                  placeholder={placeholder}
-                  className={cn(paddingClass, className)}
-                  {...field}
-                  {...props}
-                />
-              </div>
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-    );
-  }
-);
-PrefixInput.displayName = "PrefixInput";
+  return (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel
+            htmlFor={name}
+            className={
+              required
+                ? "after:content-['*'] after:text-red-500 after:ml-1"
+                : ""
+            }
+          >
+            {label}
+          </FormLabel>
+          <FormControl>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm select-none">
+                {prefix}
+              </span>
+              <Input
+                id={name}
+                placeholder={placeholder}
+                className={cn(paddingClass, className)}
+                {...field}
+                {...props}
+              />
+            </div>
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+};
 
 interface FormTextAreaProps {
   name: string;
@@ -122,48 +126,50 @@ interface FormTextAreaProps {
   rows?: number;
 }
 
-const FormTextArea = React.forwardRef<HTMLTextAreaElement, FormTextAreaProps>(
-  (
-    { name, label, placeholder, className, required, rows = 4, ...props },
-    ref
-  ) => {
-    const form = useFormContext();
+const FormTextArea = ({
+  name,
+  label,
+  placeholder,
+  className,
+  required,
+  rows = 4,
+  ...props
+}: FormTextAreaProps) => {
+  const form = useFormContext();
 
-    return (
-      <FormField
-        control={form.control}
-        name={name}
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel
-              htmlFor={name}
-              className={
-                required
-                  ? "after:content-['*'] after:text-red-500 after:ml-1"
-                  : ""
-              }
-            >
-              {label}
-            </FormLabel>
-            <FormControl>
-              <Textarea
-                id={name}
-                placeholder={placeholder}
-                className={className}
-                required={required}
-                rows={rows}
-                {...field}
-                {...props}
-              />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-    );
-  }
-);
-FormTextArea.displayName = "FormTextArea";
+  return (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel
+            htmlFor={name}
+            className={
+              required
+                ? "after:content-['*'] after:text-red-500 after:ml-1"
+                : ""
+            }
+          >
+            {label}
+          </FormLabel>
+          <FormControl>
+            <Textarea
+              id={name}
+              placeholder={placeholder}
+              className={className}
+              required={required}
+              rows={rows}
+              {...field}
+              {...props}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+};
 
 interface GridContainerProps {
   children: React.ReactNode;
