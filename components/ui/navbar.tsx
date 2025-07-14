@@ -7,14 +7,18 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "./navigation-menu";
 import ColorModeToggle from "./color-mode-toggle";
 
 const Navbar = () => (
-  <div className="flex justify-between w-full py-2 items-center">
-    <p>Custom resume generator</p>
-    <NavigationMenu viewport={false}>
+  <NavigationMenu
+    className="flex justify-between w-full py-2 items-center sticky top-0 z-10 bg-background"
+    viewport={false}
+  >
+    <NavigationMenuLink asChild>
+      <Link href="/">Custom Resume Generator</Link>
+    </NavigationMenuLink>
+    <div className="flex items-center gap-2 pr-2">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
@@ -22,26 +26,14 @@ const Navbar = () => (
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Generate</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="flex flex-col gap-1 whitespace-nowrap">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link href="/generate">Use the generator</Link>
-                </NavigationMenuLink>
-              </li>
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link href="/sample">Try a sample</Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
+          <NavigationMenuLink asChild>
+            <Link href="/generate">Generate</Link>
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
       <ColorModeToggle />
-    </NavigationMenu>
-  </div>
+    </div>
+  </NavigationMenu>
 );
 
 export default Navbar;

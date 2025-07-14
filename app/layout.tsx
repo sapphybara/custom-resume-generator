@@ -21,7 +21,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${merriweatherSans.variable} ${lato.variable} h-lvh flex flex-col w-full`}
+        className={`${merriweatherSans.variable} ${lato.variable} min-h-lvh flex flex-col w-full relative`}
       >
         <ThemeProvider
           attribute="class"
