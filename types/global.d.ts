@@ -16,12 +16,12 @@ interface Education {
 interface ResumeData {
   name: string;
   email: string;
-  phone: string;
-  location: string;
-  website: string;
-  linkedin: string;
+  phone?: string;
+  location?: string;
+  website?: string;
+  linkedin?: string;
   pronouns?: string;
-  summary: string;
+  summary?: string;
   skills: string;
   experiences: Experience[];
   education: Education[];
