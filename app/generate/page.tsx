@@ -298,24 +298,23 @@ export default function Generate() {
                       label="Company"
                       placeholder="Tech Corp"
                       required
+                      className="col-span-2"
                     />
-                    <div className="flex flex-col md:flex-row gap-4">
-                      <FormInput
-                        name={`experiences.${index}.startDate`}
-                        label="Start Date"
-                        placeholder={new Date().toLocaleString("default", {
-                          month: "long",
-                          year: "numeric",
-                        })}
-                        required
-                      />
-                      <FormInput
-                        name={`experiences.${index}.endDate`}
-                        label="End Date"
-                        placeholder="Present"
-                        required
-                      />
-                    </div>
+                    <FormInput
+                      name={`experiences.${index}.startDate`}
+                      label="Start Date"
+                      placeholder={new Date().toLocaleString("default", {
+                        month: "long",
+                        year: "numeric",
+                      })}
+                      required
+                    />
+                    <FormInput
+                      name={`experiences.${index}.endDate`}
+                      label="End Date"
+                      placeholder="Present"
+                      required
+                    />
                   </GridContainer>
 
                   <div className="mt-4">
