@@ -8,12 +8,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
   ControllerRenderProps,
   FieldValues,
   useFormContext,
 } from "react-hook-form";
+import { MoveUpRightIcon } from "lucide-react";
 
 interface FormInputProps {
   name: string;
@@ -30,6 +32,15 @@ interface InputFormControlProps extends Omit<FormInputProps, "label" | "type"> {
   type: string;
 }
 
+const isValidURL = (value: string) => {
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 const InputFormControl = ({
   field,
   name,
@@ -38,10 +49,16 @@ const InputFormControl = ({
   ...props
 }: InputFormControlProps) => {
   const hasPrefix = Boolean(prefix);
+  let urlToShow: string | undefined;
+  if (name === "linkedin") {
+    urlToShow = `https://www.linkedin.com/in/${field.value}`;
+  } else if (isValidURL(field.value)) {
+    urlToShow = field.value;
+  }
 
   return (
     <FormControl>
-      <div className={cn(hasPrefix && "relative")}>
+      <div className="relative">
         {hasPrefix && (
           <span className="absolute left-3 top-[52%] transform -translate-y-1/2 text-gray-400 text-sm select-none">
             {prefix}
@@ -54,6 +71,18 @@ const InputFormControl = ({
           {...field}
           {...props}
         />
+        {urlToShow && (
+          <Button
+            asChild
+            className="absolute right-1 top-[52%] transform -translate-y-1/2 size-8"
+            variant="ghost"
+            size="icon"
+          >
+            <a href={urlToShow} target="_blank" rel="noopener noreferrer">
+              <MoveUpRightIcon />
+            </a>
+          </Button>
+        )}
       </div>
     </FormControl>
   );
