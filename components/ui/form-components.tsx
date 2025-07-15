@@ -9,7 +9,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { useFormContext } from "react-hook-form";
+import {
+  ControllerRenderProps,
+  FieldValues,
+  useFormContext,
+} from "react-hook-form";
 
 interface FormInputProps {
   name: string;
@@ -19,6 +23,41 @@ interface FormInputProps {
   className?: string;
   required?: boolean;
 }
+
+interface InputFormControlProps extends Omit<FormInputProps, "label" | "type"> {
+  field: ControllerRenderProps<FieldValues, string>;
+  prefix?: string;
+  type: string;
+}
+
+const InputFormControl = ({
+  field,
+  name,
+  placeholder,
+  prefix,
+  ...props
+}: InputFormControlProps) => {
+  const hasPrefix = Boolean(prefix);
+
+  return (
+    <FormControl>
+      <div className={cn(hasPrefix && "relative")}>
+        {hasPrefix && (
+          <span className="absolute left-3 top-[52%] transform -translate-y-1/2 text-gray-400 text-sm select-none">
+            {prefix}
+          </span>
+        )}
+        <Input
+          id={name}
+          placeholder={placeholder}
+          className={cn(hasPrefix && "pl-28")}
+          {...field}
+          {...props}
+        />
+      </div>
+    </FormControl>
+  );
+};
 
 const FormInput = ({
   name,
@@ -36,26 +75,23 @@ const FormInput = ({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel
             htmlFor={name}
-            className={
-              required ? "after:content-['*'] after:text-red-500 gap-1" : ""
-            }
+            className={cn(
+              required && "after:content-['*'] after:text-red-500 gap-1"
+            )}
           >
             {label}
           </FormLabel>
-          <FormControl>
-            <Input
-              id={name}
-              type={type}
-              placeholder={placeholder}
-              className={className}
-              required={required}
-              {...field}
-              {...props}
-            />
-          </FormControl>
+          <InputFormControl
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            required={required}
+            field={field}
+            {...props}
+          />
           <FormMessage />
         </FormItem>
       )}
@@ -74,42 +110,34 @@ const PrefixInput = ({
   prefix,
   className,
   required,
+  type = "text",
   ...props
 }: PrefixInputProps) => {
   const form = useFormContext();
-  // Calculate padding based on prefix length
-  const paddingClass = prefix === "linkedin.com/in/" ? "pl-28" : "pl-20";
 
   return (
     <FormField
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel
             htmlFor={name}
-            className={
-              required
-                ? "after:content-['*'] after:text-red-500 after:ml-1"
-                : ""
-            }
+            className={cn(
+              required && "after:content-['*'] after:text-red-500 gap-1"
+            )}
           >
             {label}
           </FormLabel>
-          <FormControl>
-            <div className="relative">
-              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm select-none">
-                {prefix}
-              </span>
-              <Input
-                id={name}
-                placeholder={placeholder}
-                className={cn(paddingClass, className)}
-                {...field}
-                {...props}
-              />
-            </div>
-          </FormControl>
+          <InputFormControl
+            field={field}
+            name={name}
+            placeholder={placeholder}
+            prefix={prefix}
+            type={type}
+            required={required}
+            {...props}
+          />
           <FormMessage />
         </FormItem>
       )}
