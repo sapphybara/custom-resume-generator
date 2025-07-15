@@ -298,7 +298,7 @@ export default function Generate() {
                       label="Company"
                       placeholder="Tech Corp"
                       required
-                      className="col-span-2"
+                      className="lg:col-span-2"
                     />
                     <FormInput
                       name={`experiences.${index}.startDate`}
