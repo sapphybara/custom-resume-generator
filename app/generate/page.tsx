@@ -1,7 +1,5 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Form } from "@/components/ui/form";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -23,35 +21,6 @@ const PDFViewer = dynamic(
   { ssr: false }
 );
 
-const formSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.email("Invalid email address"),
-  phone: z.string().optional(),
-  location: z.string().optional(),
-  website: z.url("Invalid website URL").optional(),
-  linkedin: z.string().optional(),
-  pronouns: z.string().optional(),
-  summary: z.string().optional(),
-  skills: z.string().min(1, "Skills are required"),
-  experiences: z.array(
-    z.object({
-      jobTitle: z.string().min(1, "Job title is required"),
-      company: z.string().min(1, "Company is required"),
-      startDate: z.string().min(1, "Start date is required"),
-      endDate: z.string().min(1, "End date is required"),
-      jobDescription: z.string().min(1, "Job description is required"),
-    })
-  ),
-  education: z.array(
-    z.object({
-      degree: z.string().min(1, "Degree is required"),
-      institution: z.string().min(1, "Institution is required"),
-      year: z.string().min(1, "Year is required"),
-      details: z.string().optional(),
-    })
-  ),
-});
-
 export default function Generate() {
   const [isClient, setIsClient] = useState(false);
 
@@ -59,8 +28,7 @@ export default function Generate() {
     setIsClient(true);
   }, []);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ResumeData>({
     defaultValues: {
       name: "Sapphyra Wiser",
       email: "sapphyra.wiser@gmail.com",
@@ -170,7 +138,7 @@ export default function Generate() {
   };
 
   // Handle form submission
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: ResumeData) => {
     try {
       const result = await generateResumePDF(data);
       if (result.success) {
