@@ -1,4 +1,4 @@
-import { ResumePDF } from "@/lib/pdf/pdf-generator";
+import { ResumePDF } from "@/lib/pdf/generator";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
