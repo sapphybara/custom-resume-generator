@@ -1,8 +1,10 @@
-import { pdf } from "@react-pdf/renderer";
-import { ResumePDF } from "./pdf-generator";
+import { Font, pdf } from "@react-pdf/renderer";
+import { ResumePDF } from "@/app/generate/_pdf/generator";
 
 export const generateResumePDF = async (data: ResumeData) => {
   try {
+    registerFonts();
+
     const doc = <ResumePDF data={data} />;
     const blob = await pdf(doc).toBlob();
     const url = URL.createObjectURL(blob);
@@ -21,4 +23,37 @@ export const generateResumePDF = async (data: ResumeData) => {
     console.error("Error generating PDF:", error);
     return { success: false, error };
   }
+};
+
+export const registerFonts = () => {
+  Font.register({
+    family: "Lato",
+    fonts: [
+      {
+        src: "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjxAwXjeu.woff2",
+      },
+      {
+        src: "https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVSwaPGR_p.woff2",
+        fontWeight: "bold",
+      },
+    ],
+  });
+
+  Font.register({
+    family: "Merriweather Sans",
+    fonts: [
+      {
+        src: "https://fonts.gstatic.com/s/merriweathersans/v27/2-c99IRs1JiJN1FRAMjTN5zd9vgsFHX7QjX78w.woff2",
+      },
+      {
+        src: "https://fonts.gstatic.com/s/merriweathersans/v27/2-c79IRs1JiJN1FRAMjTN5zd9vgsFHXwcjnj9ytf.woff2",
+        fontStyle: "italic",
+      },
+    ],
+  });
+
+  Font.registerEmojiSource({
+    format: "png",
+    url: "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/",
+  });
 };
