@@ -1,5 +1,5 @@
 import { ResumePDF } from "./_pdf/generator";
-import { registerFonts } from "@/lib/pdf/utils";
+import { registerFonts } from "@/lib/pdf-utils";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 

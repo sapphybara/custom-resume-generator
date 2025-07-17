@@ -12,7 +12,7 @@ import {
   FieldArrayWithId,
   UseFieldArrayRemove,
 } from "react-hook-form";
-import { generateResumePDF } from "@/lib/pdf/utils";
+import { generateResumePDF } from "@/lib/pdf-utils";
 
 type ResumeFormProps = {
   form: UseFormReturn<ResumeData>;
