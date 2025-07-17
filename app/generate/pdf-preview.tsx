@@ -1,4 +1,5 @@
-import { ResumePDF } from "@/lib/pdf/generator";
+import { ResumePDF } from "./_pdf/generator";
+import { registerFonts } from "@/lib/pdf/utils";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
@@ -16,6 +17,7 @@ export default function PDFPreview({ watchedValues }: PDFPreviewProps) {
 
   useEffect(() => {
     setIsClient(true);
+    registerFonts();
   }, []);
 
   return (
