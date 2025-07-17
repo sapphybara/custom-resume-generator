@@ -15,10 +15,14 @@ const Navbar = () => (
     className="flex justify-between w-full py-2 items-center sticky top-0 z-10 bg-background"
     viewport={false}
   >
-    <NavigationMenuLink asChild>
+    <NavigationMenuLink
+      asChild
+      className="text-md font-(family-name:--font-merriweather-sans)"
+    >
       <Link href="/">Custom Resume Generator</Link>
     </NavigationMenuLink>
-    <div className="flex items-center gap-2 pr-2">
+    <div className="flex items-center gap-2">
+      <ColorModeToggle />
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
@@ -31,7 +35,6 @@ const Navbar = () => (
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
-      <ColorModeToggle />
     </div>
   </NavigationMenu>
 );
