@@ -1,5 +1,6 @@
-import React from "react";
 import { Document, Page, Text, View, Link } from "@react-pdf/renderer";
+import React from "react";
+
 import styles from "./styles";
 
 interface ResumePDFProps {
@@ -14,7 +15,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
       contacts.push(
         <Text key="location" style={styles.contactItem}>
           🏠 {data.location}
-        </Text>
+        </Text>,
       );
     }
 
@@ -26,7 +27,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
           style={styles.contactLink}
         >
           <Text style={styles.contactItem}>📧 {data.email}</Text>
-        </Link>
+        </Link>,
       );
     }
 
@@ -34,7 +35,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
       contacts.push(
         <Link key="phone" src={`tel:${data.phone}`} style={styles.contactLink}>
           <Text style={styles.contactItem}>📞 {data.phone}</Text>
-        </Link>
+        </Link>,
       );
     }
 
@@ -48,7 +49,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
           <Text style={styles.contactItem}>
             🔗 linkedin.com/in/{data.linkedin.replace(linkedInRegexURL, "")}
           </Text>
-        </Link>
+        </Link>,
       );
     }
 
@@ -61,7 +62,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
           <Text style={styles.contactItem}>
             🌐 {data.website.replace(/^https?:\/\//, "")}
           </Text>
-        </Link>
+        </Link>,
       );
     }
 
@@ -69,7 +70,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
       contacts.push(
         <Text key="pronouns" style={styles.contactItem}>
           👤 {data.pronouns}
-        </Text>
+        </Text>,
       );
     }
 

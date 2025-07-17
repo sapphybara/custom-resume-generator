@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
+
+import ColorModeToggle from "./color-mode-toggle";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "./navigation-menu";
-import ColorModeToggle from "./color-mode-toggle";
 
 const Navbar = () => (
   <NavigationMenu

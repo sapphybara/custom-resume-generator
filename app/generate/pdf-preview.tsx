@@ -1,7 +1,9 @@
-import { ResumePDF } from "./_pdf/generator";
-import { registerFonts } from "@/lib/pdf-utils";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+
+import { registerFonts } from "@/lib/pdf-utils";
+
+import { ResumePDF } from "./_pdf/generator";
 
 interface PDFPreviewProps {
   watchedValues: ResumeData;
@@ -9,7 +11,7 @@ interface PDFPreviewProps {
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function PDFPreview({ watchedValues }: PDFPreviewProps) {

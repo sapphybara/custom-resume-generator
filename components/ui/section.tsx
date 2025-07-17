@@ -1,5 +1,6 @@
-import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import React from "react";
+
 import { cn } from "@/lib/utils";
 
 const sectionVariants = cva("rounded-lg shadow-sm border", {
@@ -60,7 +61,7 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <section
@@ -74,7 +75,7 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
               sectionHeaderVariants({
                 size: headerSize,
                 variant: headerVariant,
-              })
+              }),
             )}
           >
             {title}
@@ -83,7 +84,7 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
         {children}
       </section>
     );
-  }
+  },
 );
 Section.displayName = "Section";
 

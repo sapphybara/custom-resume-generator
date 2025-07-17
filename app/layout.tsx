@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
-import { ThemeProvider } from "@/components/ui/theme-provider";
-import Navbar from "@/components/ui/navbar";
-import { lato, merriweatherSans } from "@/styles/fonts";
 import Footer from "@/components/ui/footer";
+import Navbar from "@/components/ui/navbar";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { lato, merriweatherSans } from "@/styles/fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",

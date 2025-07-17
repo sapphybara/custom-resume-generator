@@ -1,8 +1,9 @@
 "use client";
 
 import useResumeForm from "@/hooks/use-form-data";
-import ResumeForm from "./resume-form";
+
 import PDFPreview from "./pdf-preview";
+import ResumeForm from "./resume-form";
 
 export default function Generate() {
   const {

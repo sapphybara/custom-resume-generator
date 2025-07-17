@@ -1,4 +1,12 @@
+import { MoveUpRightIcon } from "lucide-react";
 import React from "react";
+import {
+  ControllerRenderProps,
+  FieldValues,
+  useFormContext,
+} from "react-hook-form";
+
+import { Button } from "@/components/ui/button";
 import {
   FormField,
   FormItem,
@@ -8,14 +16,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  ControllerRenderProps,
-  FieldValues,
-  useFormContext,
-} from "react-hook-form";
-import { MoveUpRightIcon } from "lucide-react";
+
 
 interface FormInputProps {
   name: string;
@@ -108,7 +110,7 @@ const FormInput = ({
           <FormLabel
             htmlFor={name}
             className={cn(
-              required && "after:content-['*'] after:text-red-500 gap-1"
+              required && "after:content-['*'] after:text-red-500 gap-1",
             )}
           >
             {label}
@@ -153,7 +155,7 @@ const PrefixInput = ({
           <FormLabel
             htmlFor={name}
             className={cn(
-              required && "after:content-['*'] after:text-red-500 gap-1"
+              required && "after:content-['*'] after:text-red-500 gap-1",
             )}
           >
             {label}
@@ -247,7 +249,7 @@ const GridContainer: React.FC<GridContainerProps> = ({
   className,
 }) => {
   const gridClasses = [
-    `grid`,
+    "grid",
     `gap-${gap}`,
     "grid-cols-1",
     "sm:grid-cols-2",

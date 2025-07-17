@@ -1,4 +1,5 @@
 import { Font, pdf } from "@react-pdf/renderer";
+
 import { ResumePDF } from "@/app/generate/_pdf/generator";
 
 export const generateResumePDF = async (data: ResumeData) => {

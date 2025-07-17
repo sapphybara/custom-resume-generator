@@ -1,3 +1,9 @@
+import {
+  UseFormReturn,
+  FieldArrayWithId,
+  UseFieldArrayRemove,
+} from "react-hook-form";
+
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import {
@@ -7,11 +13,6 @@ import {
   FormTextArea,
 } from "@/components/ui/form-components";
 import { Section } from "@/components/ui/section";
-import {
-  UseFormReturn,
-  FieldArrayWithId,
-  UseFieldArrayRemove,
-} from "react-hook-form";
 import { generateResumePDF } from "@/lib/pdf-utils";
 
 type ResumeFormProps = {
