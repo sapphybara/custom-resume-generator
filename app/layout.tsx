@@ -16,13 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      className="flex justify-center **:max-w-[1200px]"
-      lang="en"
-      suppressHydrationWarning
-    >
+    <html className="flex justify-center" lang="en" suppressHydrationWarning>
       <body
-        className={`${merriweatherSans.variable} ${lato.variable} min-h-lvh flex flex-col w-full relative`}
+        className={`${merriweatherSans.variable} ${lato.variable} h-lvh flex flex-col w-full relative max-w-[1200px]`}
       >
         <ThemeProvider
           attribute="class"
@@ -31,8 +27,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          {children}
-          <Footer />
+          <div className="flex flex-col justify-between flex-1 overflow-y-auto">
+            <main className="flex flex-col flex-1">{children}</main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

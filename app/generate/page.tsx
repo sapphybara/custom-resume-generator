@@ -17,7 +17,7 @@ export default function Generate() {
   } = useResumeForm();
 
   return (
-    <div className="mx-auto p-6 space-y-8">
+    <div className="mx-auto p-6 space-y-8 w-full">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Generate Your Resume
