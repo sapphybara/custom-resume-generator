@@ -2,7 +2,7 @@
 
 import useResumeForm from "@/hooks/use-form-data";
 
-import PDFPreview from "./pdf-preview";
+import PDFPreview from "./_pdf/preview";
 import ResumeForm from "./resume-form";
 
 export default function Generate() {
