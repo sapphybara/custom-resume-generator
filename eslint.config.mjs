@@ -10,7 +10,6 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  // Ignore patterns (replaces .eslintignore)
   {
     ignores: [
       "node_modules/**",
@@ -32,12 +31,10 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      // Semicolons and formatting preferences
       "semi": ["error", "always"],
       "quotes": ["error", "double", { "avoidEscape": true }],
       "comma-dangle": ["error", "always-multiline"],
-      
-      // Unused variables with underscore exceptions
+
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
@@ -47,15 +44,14 @@ const eslintConfig = [
         }
       ],
       "no-unused-vars": "off",
-      
-      // Import organization
+
       "import/order": [
         "error",
         {
           "groups": [
-            ["builtin", "external"], // Group Node.js built-ins WITH npm packages
-            "internal",              // Your @/ imports get their own group
-            ["parent", "sibling", "index"] // All relative imports together
+            ["builtin", "external"],
+            "internal",
+            ["parent", "sibling", "index"]
           ],
           "newlines-between": "always",
           "alphabetize": {
@@ -64,17 +60,13 @@ const eslintConfig = [
           }
         }
       ],
-      
-      // Console usage control
+
       "no-console": ["warn", { "allow": ["error", "warn"] }],
-      
-      // Modern JavaScript practices
+
       "prefer-const": "error",
-      
-      // TypeScript preferences
+
       "@typescript-eslint/no-explicit-any": "warn",
-      
-      // Spacing and formatting (if not covered by base configs)
+
       "object-curly-spacing": ["error", "always"],
       "space-before-blocks": "error",
       "keyword-spacing": "error",
