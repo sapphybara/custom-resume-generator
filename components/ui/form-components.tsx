@@ -18,7 +18,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
-
 interface FormInputProps {
   name: string;
   label: string;
@@ -110,7 +109,7 @@ const FormInput = ({
           <FormLabel
             htmlFor={name}
             className={cn(
-              required && "after:content-['*'] after:text-red-500 gap-1",
+              required && "after:content-['*'] after:text-red-500 gap-1"
             )}
           >
             {label}
@@ -155,7 +154,7 @@ const PrefixInput = ({
           <FormLabel
             htmlFor={name}
             className={cn(
-              required && "after:content-['*'] after:text-red-500 gap-1",
+              required && "after:content-['*'] after:text-red-500 gap-1"
             )}
           >
             {label}
@@ -253,8 +252,8 @@ const GridContainer: React.FC<GridContainerProps> = ({
     `gap-${gap}`,
     "grid-cols-1",
     "sm:grid-cols-2",
-    "md:grid-cols-3",
-    "lg:grid-cols-4",
+    "md:grid-cols-1",
+    "lg:grid-cols-2",
   ]
     .filter(Boolean)
     .join(" ");

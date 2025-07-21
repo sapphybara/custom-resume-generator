@@ -4,6 +4,7 @@ import useResumeForm from "@/hooks/use-form-data";
 
 import PDFPreview from "./_pdf/preview";
 import ResumeForm from "./resume-form";
+import ResumeFormPreview from "./resume-form-preview";
 
 export default function Generate() {
   const {
@@ -27,15 +28,19 @@ export default function Generate() {
           Fill in your information to create a professional resume
         </p>
       </div>
-      <ResumeForm
-        form={form}
-        experienceFields={experienceFields}
-        addExperience={addExperience}
-        removeExperience={removeExperience}
-        educationFields={educationFields}
-        addEducation={addEducation}
-        removeEducation={removeEducation}
-      />
+      <div className="flex gap-4 isolate">
+        <ResumeFormPreview watchedValues={watchedValues} />
+        <ResumeForm
+          className="max-w-[80ch]"
+          form={form}
+          experienceFields={experienceFields}
+          addExperience={addExperience}
+          removeExperience={removeExperience}
+          educationFields={educationFields}
+          addEducation={addEducation}
+          removeEducation={removeEducation}
+        />
+      </div>
       <PDFPreview watchedValues={watchedValues} />
     </div>
   );
