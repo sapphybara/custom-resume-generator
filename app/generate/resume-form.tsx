@@ -14,8 +14,10 @@ import {
 } from "@/components/ui/form-components";
 import { Section } from "@/components/ui/section";
 import { generateResumePDF } from "@/lib/pdf-utils";
+import { cn } from "@/lib/utils";
 
 type ResumeFormProps = {
+  className?: string;
   form: UseFormReturn<ResumeData>;
   experienceFields: FieldArrayWithId<ResumeData, "experiences", "id">[];
   addExperience: () => void;
@@ -26,6 +28,7 @@ type ResumeFormProps = {
 };
 
 export default function ResumeForm({
+  className,
   form,
   experienceFields,
   addExperience,
@@ -48,7 +51,10 @@ export default function ResumeForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className={cn("space-y-8", className)}
+      >
         {/* Personal Information Section */}
         <Section title="Personal Information" variant="highlighted">
           <GridContainer>
