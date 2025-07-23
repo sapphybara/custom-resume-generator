@@ -1,13 +1,22 @@
-import { Font, pdf } from "@react-pdf/renderer";
-
-import { ResumePDF } from "@/app/generate/_pdf/generator";
+import { Font } from "@react-pdf/renderer";
 
 export const generateResumePDF = async (data: ResumeData) => {
   try {
-    registerFonts();
+    const response = await fetch("/api/generate-pdf", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-    const doc = <ResumePDF data={data} />;
-    const blob = await pdf(doc).toBlob();
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Failed to generate PDF");
+    }
+
+    // Get the PDF blob from the response
+    const blob = await response.blob();
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
 
