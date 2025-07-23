@@ -9,7 +9,6 @@ import ResumeFormPreview from "./resume-form-preview";
 export default function Generate() {
   const {
     form,
-    watchedValues,
     experienceFields,
     addExperience,
     removeExperience,
@@ -29,7 +28,7 @@ export default function Generate() {
         </p>
       </div>
       <div className="flex gap-4 isolate">
-        <ResumeFormPreview watchedValues={watchedValues} />
+        <ResumeFormPreview control={form.control} />
         <ResumeForm
           className="max-w-[80ch]"
           form={form}
@@ -41,7 +40,7 @@ export default function Generate() {
           removeEducation={removeEducation}
         />
       </div>
-      <PDFPreview watchedValues={watchedValues} />
+      <PDFPreview control={form.control} />
     </div>
   );
 }

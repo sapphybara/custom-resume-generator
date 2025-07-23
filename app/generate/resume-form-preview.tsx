@@ -1,16 +1,14 @@
 import { isEducation, isExperience } from "@/lib/type-guards";
-
-interface ResumeFormPreviewProps {
-  watchedValues: ResumeData;
-}
+import { useWatch } from "react-hook-form";
 
 interface InformationListProps<T extends Experience | Education> {
   keys: (keyof T)[];
   list: T[];
 }
 
-interface OptionalResumeValueProps extends ResumeFormPreviewProps {
+interface OptionalResumeValueProps {
   resumeFieldKey: keyof ResumeData;
+  watchedValues: ResumeData;
 }
 
 const InformationList = <T extends Experience | Education>({
@@ -75,9 +73,9 @@ const OptionalResumeValue = ({
   );
 };
 
-export default function ResumeFormPreview({
-  watchedValues,
-}: ResumeFormPreviewProps) {
+export default function ResumeFormPreview({ control }: PropsWithControl) {
+  const watchedValues = useWatch({ control }) as ResumeData;
+
   return (
     <div className="hidden md:block flex-1 sticky top-0 h-full bg-secondary rounded-lg p-2 min-w-2xs">
       <div>

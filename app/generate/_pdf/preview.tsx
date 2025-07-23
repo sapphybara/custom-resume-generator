@@ -2,18 +2,16 @@ import { ResumePDF } from "./generator";
 import { registerFonts } from "@/lib/pdf-utils";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-
-interface PDFPreviewProps {
-  watchedValues: ResumeData;
-}
+import { useWatch } from "react-hook-form";
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
   { ssr: false }
 );
 
-export default function PDFPreview({ watchedValues }: PDFPreviewProps) {
+export default function PDFPreview({ control }: PropsWithControl) {
   const [isClient, setIsClient] = useState(false);
+  const watchedValues = useWatch({ control }) as ResumeData;
 
   useEffect(() => {
     setIsClient(true);

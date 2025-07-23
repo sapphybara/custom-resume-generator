@@ -112,7 +112,6 @@ const useResumeForm = () => {
 
   return {
     form,
-    watchedValues,
     experienceFields,
     addExperience,
     removeExperience,

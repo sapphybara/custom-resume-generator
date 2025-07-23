@@ -1,28 +1,36 @@
-interface Experience {
-  jobTitle: string;
-  company: string;
-  startDate: string;
-  endDate: string;
-  jobDescription: string;
-}
+import type { Control } from "react-hook-form";
 
-interface Education {
-  degree: string;
-  institution: string;
-  year: string;
-  details?: string;
-}
+declare global {
+  interface Experience {
+    jobTitle: string;
+    company: string;
+    startDate: string;
+    endDate: string;
+    jobDescription: string;
+  }
 
-interface ResumeData {
-  name: string;
-  email: string;
-  phone?: string;
-  location?: string;
-  website?: string;
-  linkedin?: string;
-  pronouns?: string;
-  summary?: string;
-  skills: string;
-  experiences: Experience[];
-  education: Education[];
+  interface Education {
+    degree: string;
+    institution: string;
+    year: string;
+    details?: string;
+  }
+
+  interface ResumeData {
+    name: string;
+    email: string;
+    phone?: string;
+    location?: string;
+    website?: string;
+    linkedin?: string;
+    pronouns?: string;
+    summary?: string;
+    skills: string;
+    experiences: Experience[];
+    education: Education[];
+  }
+
+  interface PropsWithControl {
+    control: Control<ResumeData, any, ResumeData>;
+  }
 }
