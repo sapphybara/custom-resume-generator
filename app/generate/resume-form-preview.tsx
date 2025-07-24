@@ -1,5 +1,7 @@
-import { isEducation, isExperience } from "@/lib/type-guards";
+import { Fragment } from "react";
 import { useWatch } from "react-hook-form";
+
+import { isEducation, isExperience } from "@/lib/type-guards";
 
 interface InformationListProps<T extends Experience | Education> {
   keys: (keyof T)[];
@@ -8,8 +10,16 @@ interface InformationListProps<T extends Experience | Education> {
 
 interface OptionalResumeValueProps {
   resumeFieldKey: keyof ResumeData;
-  watchedValues: ResumeData;
+  formData: ResumeData;
 }
+
+type EmojiMap = { [K in keyof ResumeData]?: string };
+const EMOJI_MAP: EmojiMap = {
+  location: "🏠",
+  email: "📧",
+  phone: "📞",
+  website: "🌐",
+};
 
 const InformationList = <T extends Experience | Education>({
   keys,
@@ -24,18 +34,22 @@ const InformationList = <T extends Experience | Education>({
   </div>
 );
 
+const formatKey = (key: string) => {
+  if (key === "linkedin") {
+    return "🔗linkedin.com/in/";
+  } else if (key === "pronouns") {
+    return "";
+  } else if (key in EMOJI_MAP) {
+    return EMOJI_MAP[key as keyof EmojiMap];
+  }
+  return key[0].toUpperCase() + key.substring(1) + ": ";
+};
+
 const OptionalResumeValue = ({
   resumeFieldKey,
-  watchedValues,
+  formData,
 }: OptionalResumeValueProps) => {
-  const formatKey = (key: string) => {
-    if (key === "linkedin") {
-      return "LinkedIn";
-    }
-    return key[0].toUpperCase() + key.substring(1);
-  };
-
-  const value = watchedValues[resumeFieldKey];
+  const value = formData[resumeFieldKey];
   if (!value) {
     return null;
   }
@@ -66,49 +80,35 @@ const OptionalResumeValue = ({
     }
   }
 
-  return (
-    <p key={resumeFieldKey}>
-      {formatKey(resumeFieldKey)}: {value}
-    </p>
-  );
+  return <span key={resumeFieldKey}>{formatKey(resumeFieldKey) + value}</span>;
 };
 
 export default function ResumeFormPreview({ control }: PropsWithControl) {
-  const watchedValues = useWatch({ control }) as ResumeData;
+  const formData = useWatch({ control }) as ResumeData;
 
   return (
-    <div className="hidden md:block flex-1 sticky top-0 h-full bg-secondary rounded-lg p-2 min-w-2xs">
-      <div>
-        <p>Personal Information</p>
-        <div className="pl-4 text-sm">
-          <p>Name: {watchedValues.name}</p>
-          <OptionalResumeValue
-            resumeFieldKey="pronouns"
-            watchedValues={watchedValues}
-          />
+    <div className="hidden md:block flex-1 sticky top-0 h-full bg-secondary rounded-lg p-2 min-w-xs">
+      <div className="text-center">
+        <h3>{formData.name || "Your Name"}</h3>
+        <h4 className="text-sm font-normal">
+          <OptionalResumeValue resumeFieldKey="pronouns" formData={formData} />
+        </h4>
+        <hr className="pb-1" />
+        <div className="text-sm leading-relaxed break-all">
+          {(["location", "email", "phone", "linkedin", "website"] as const)
+            .filter((key) => formData[key])
+            .map((key, idx, filteredKeys) => (
+              <Fragment key={key}>
+                <OptionalResumeValue resumeFieldKey={key} formData={formData} />
+                {idx < filteredKeys.length - 1 && (
+                  <span className="mx-1 text-gray-400">|</span>
+                )}
+              </Fragment>
+            ))}
         </div>
-        <p>Contact Information</p>
-        <div className="pl-4 text-sm">
-          <p>Email: {watchedValues.email}</p>
-          {(["phone", "location", "website", "linkedin"] as const).map(
-            (contactKey) => (
-              <OptionalResumeValue
-                key={contactKey}
-                resumeFieldKey={contactKey}
-                watchedValues={watchedValues}
-              />
-            )
-          )}
-        </div>
-        <OptionalResumeValue
-          resumeFieldKey="experiences"
-          watchedValues={watchedValues}
-        />
-        <OptionalResumeValue
-          resumeFieldKey="education"
-          watchedValues={watchedValues}
-        />
       </div>
+      <OptionalResumeValue resumeFieldKey="experiences" formData={formData} />
+      <OptionalResumeValue resumeFieldKey="education" formData={formData} />
     </div>
   );
 }
