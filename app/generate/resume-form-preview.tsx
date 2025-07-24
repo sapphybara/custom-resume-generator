@@ -8,9 +8,10 @@ interface InformationListProps<T extends Experience | Education> {
   list: T[];
 }
 
-interface OptionalResumeValueProps {
+interface OptionalResumeValueProps extends PropsWithControl {
   resumeFieldKey: keyof ResumeData;
-  formData: ResumeData;
+  showSeparator?: boolean;
+  value?: string | Experience[] | Education[];
 }
 
 type EmojiMap = { [K in keyof ResumeData]?: string };
@@ -46,12 +47,18 @@ const formatKey = (key: string) => {
 };
 
 const OptionalResumeValue = ({
+  control,
   resumeFieldKey,
-  formData,
+  showSeparator = false,
+  value,
 }: OptionalResumeValueProps) => {
-  const value = formData[resumeFieldKey];
   if (!value) {
-    return null;
+    const newValue = useWatch({ control, name: resumeFieldKey });
+    if (newValue) {
+      value = newValue;
+    } else {
+      return null;
+    }
   }
 
   if (Array.isArray(value)) {
@@ -80,35 +87,53 @@ const OptionalResumeValue = ({
     }
   }
 
-  return <span key={resumeFieldKey}>{formatKey(resumeFieldKey) + value}</span>;
+  return (
+    <>
+      <span key={resumeFieldKey}>{formatKey(resumeFieldKey) + value}</span>
+      {showSeparator && <span className="mx-1 text-gray-400">|</span>}
+    </>
+  );
 };
 
 export default function ResumeFormPreview({ control }: PropsWithControl) {
-  const formData = useWatch({ control }) as ResumeData;
+  const name = useWatch({ control, name: "name" });
+  const contactFields = [
+    "location",
+    "email",
+    "phone",
+    "linkedin",
+    "website",
+  ] as const;
+
+  const contactValues = contactFields
+    .map((key) => ({
+      key,
+      value: useWatch({ control, name: key }),
+    }))
+    .filter(({ value }) => value);
 
   return (
     <div className="hidden md:block flex-1 sticky top-0 h-full bg-secondary rounded-lg p-2 min-w-xs">
       <div className="text-center">
-        <h3>{formData.name || "Your Name"}</h3>
+        <h3>{name || "Your Name"}</h3>
         <h4 className="text-sm font-normal">
-          <OptionalResumeValue resumeFieldKey="pronouns" formData={formData} />
+          <OptionalResumeValue resumeFieldKey="pronouns" control={control} />
         </h4>
         <hr className="pb-1" />
         <div className="text-sm leading-relaxed break-all">
-          {(["location", "email", "phone", "linkedin", "website"] as const)
-            .filter((key) => formData[key])
-            .map((key, idx, filteredKeys) => (
-              <Fragment key={key}>
-                <OptionalResumeValue resumeFieldKey={key} formData={formData} />
-                {idx < filteredKeys.length - 1 && (
-                  <span className="mx-1 text-gray-400">|</span>
-                )}
-              </Fragment>
-            ))}
+          {contactValues.map(({ key, value }, idx) => (
+            <OptionalResumeValue
+              key={key}
+              resumeFieldKey={key}
+              control={control}
+              showSeparator={idx < contactValues.length - 1}
+              value={value}
+            />
+          ))}
         </div>
       </div>
-      <OptionalResumeValue resumeFieldKey="experiences" formData={formData} />
-      <OptionalResumeValue resumeFieldKey="education" formData={formData} />
+      <OptionalResumeValue resumeFieldKey="experiences" control={control} />
+      <OptionalResumeValue resumeFieldKey="education" control={control} />
     </div>
   );
 }
