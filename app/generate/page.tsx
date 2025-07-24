@@ -2,7 +2,6 @@
 
 import useResumeForm from "@/hooks/use-form-data";
 
-import PDFPreview from "./_pdf/preview";
 import ResumeForm from "./resume-form";
 import ResumeFormPreview from "./resume-form-preview";
 
@@ -39,22 +38,19 @@ export default function Generate() {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white"></div>
         </div>
       ) : (
-        <>
-          <div className="flex gap-4 isolate">
-            <ResumeFormPreview control={control} />
-            <ResumeForm
-              className="w-[clamp(min(100vw-var(--spacing)*6,80ch),100%,80ch)]"
-              form={form}
-              experienceFields={experienceFields}
-              addExperience={addExperience}
-              removeExperience={removeExperience}
-              educationFields={educationFields}
-              addEducation={addEducation}
-              removeEducation={removeEducation}
-            />
-          </div>
-          <PDFPreview control={control} />
-        </>
+        <div className="flex gap-4 isolate">
+          <ResumeFormPreview control={control} />
+          <ResumeForm
+            className="w-[clamp(min(100vw-var(--spacing)*6,80ch),100%,80ch)]"
+            form={form}
+            experienceFields={experienceFields}
+            addExperience={addExperience}
+            removeExperience={removeExperience}
+            educationFields={educationFields}
+            addEducation={addEducation}
+            removeEducation={removeEducation}
+          />
+        </div>
       )}
     </div>
   );
