@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { useWatch } from "react-hook-form";
 
 import { isEducation, isExperience } from "@/lib/type-guards";
