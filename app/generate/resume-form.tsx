@@ -61,14 +61,14 @@ export default function ResumeForm({
             <FormInput
               name="name"
               label="Full Name"
-              placeholder="John Doe"
+              placeholder="Jane Doe"
               required
             />
             <FormInput
               name="email"
               label="Email"
               type="email"
-              placeholder="john@example.com"
+              placeholder="jane@example.com"
               required
             />
             <FormInput

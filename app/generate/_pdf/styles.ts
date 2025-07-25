@@ -108,8 +108,8 @@ const styles = StyleSheet.create({
     lineHeight: 1.6,
     marginBottom: 4,
     color: "#333",
-    paddingLeft: 8,
-    textIndent: -8,
+    paddingLeft: 10,
+    textIndent: -10,
   },
 
   educationAdditional: {
