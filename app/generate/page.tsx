@@ -6,7 +6,11 @@ import { auth0 } from "@/lib/auth0";
 import ResumeFormWrapper from "./resume-form-wrapper";
 
 export const metadata: Metadata = {
-  title: "Custom Resume Generator | Generate",
+  title: "Generate Resume - Custom Resume Generator",
+  description:
+    "Create your ATS-optimized resume with our intelligent generator. Input your information and let our system handle the formatting and layout automatically. Perfect for job applications and career advancement.",
+  keywords:
+    "create resume, generate resume, ATS resume builder, job application resume, professional resume maker",
 };
 
 function NotAuthorized() {
