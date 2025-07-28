@@ -7,6 +7,7 @@ const merriweatherSans = Merriweather_Sans({
 const lato = Lato({
   variable: "--font-lato",
   weight: ["400", "700"],
+  subsets: ["latin"],
 });
 
 export { merriweatherSans, lato };
