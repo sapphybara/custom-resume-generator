@@ -33,4 +33,8 @@ declare global {
   interface PropsWithControl {
     control: Control<ResumeData, any, ResumeData>;
   }
+
+  interface PropsWithClassName {
+    className?: string;
+  }
 }

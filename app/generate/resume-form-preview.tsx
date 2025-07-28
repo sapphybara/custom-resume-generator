@@ -1,13 +1,14 @@
 import { useWatch } from "react-hook-form";
 
 import { isEducation, isExperience } from "@/lib/type-guards";
+import { cn } from "@/lib/utils";
 
 interface InformationListProps<T extends Experience | Education> {
   keys: (keyof T)[];
   list: T[];
 }
 
-interface OptionalResumeValueProps {
+interface OptionalResumeValueProps extends PropsWithClassName {
   resumeFieldKey: keyof ResumeData;
   showSeparator?: boolean;
   value?: string | Partial<Experience>[] | Partial<Education>[];
@@ -42,10 +43,11 @@ const formatKey = (key: string) => {
   } else if (key in EMOJI_MAP) {
     return EMOJI_MAP[key as keyof EmojiMap];
   }
-  return key[0].toUpperCase() + key.substring(1) + ": ";
+  return key[0].toUpperCase() + key.substring(1) + ":";
 };
 
 const OptionalResumeValue = ({
+  className,
   resumeFieldKey,
   showSeparator = false,
   value,
@@ -58,26 +60,26 @@ const OptionalResumeValue = ({
     const experienceList = value.filter(isExperience);
     if (experienceList.length > 0) {
       return (
-        <>
+        <div className={className}>
           <p>Experience</p>
           <InformationList
             keys={["jobTitle", "company", "startDate", "endDate"]}
             list={experienceList}
           />
-        </>
+        </div>
       );
     }
 
     const educationList = value.filter(isEducation);
     if (educationList.length > 0) {
       return (
-        <>
+        <div className={className}>
           <p>Education</p>
           <InformationList
             keys={["degree", "year", "institution"]}
             list={educationList}
           />
-        </>
+        </div>
       );
     }
 
@@ -85,10 +87,11 @@ const OptionalResumeValue = ({
   }
 
   return (
-    <>
-      <span key={resumeFieldKey}>{formatKey(resumeFieldKey) + value}</span>
-      {showSeparator && <span className="mx-1 text-gray-400">|</span>}
-    </>
+    <div className={cn("inline-flex items-center gap-1", className)}>
+      <span>{formatKey(resumeFieldKey)}</span>
+      <span className="text-sm">{value}</span>
+      {showSeparator && <span className="mr-1 text-gray-400">|</span>}
+    </div>
   );
 };
 
@@ -132,6 +135,11 @@ export default function ResumeFormPreview({ control }: PropsWithControl) {
           ))}
         </div>
       </div>
+      <OptionalResumeValue
+        className="items-baseline"
+        resumeFieldKey="skills"
+        value={formData?.skills}
+      />
       <OptionalResumeValue
         resumeFieldKey="experiences"
         value={formData?.experiences}
