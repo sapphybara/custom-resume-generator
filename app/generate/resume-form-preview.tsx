@@ -112,7 +112,7 @@ export default function ResumeFormPreview({ control }: PropsWithControl) {
     .filter(({ value }) => value);
 
   return (
-    <div className="hidden md:block flex-1 sticky top-0 h-full bg-secondary rounded-lg p-2 min-w-xs">
+    <div className="hidden md:flex flex-col flex-1 sticky top-0 h-fit bg-secondary rounded-lg p-2 min-w-xs">
       <div className="text-center">
         <h3>{name || "Your Name"}</h3>
         <h4 className="text-sm font-normal pb-1">

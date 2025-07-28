@@ -10,9 +10,7 @@ export const metadata: Metadata = {
 
 function NotAuthorized() {
   return (
-    <div className="flex flex-col items-center gap-2">
-      <h2>Please Log In</h2>
-      <br />
+    <div className="flex flex-col sm:flex-row justify-center items-center flex-1 gap-4 sm:gap-8">
       <Button asChild>
         <a href="/auth/login?screen_hint=signup&returnTo=/generate">Sign Up</a>
       </Button>
@@ -29,13 +27,15 @@ export default async function Generate() {
   const Child = session ? ResumeFormWrapper : NotAuthorized;
 
   return (
-    <div className="mx-auto p-6 space-y-8 w-full">
+    <div className="flex flex-col mx-auto pt-12 p-6 space-y-8 w-full min-h-full">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Generate Your Resume
         </h1>
         <p className="text-gray-600 dark:text-gray-400">
-          Fill in your information to create a professional resume
+          {session
+            ? "Fill in your information to create a professional resume"
+            : "Log in to use the generator"}
         </p>
       </div>
       <Child />
