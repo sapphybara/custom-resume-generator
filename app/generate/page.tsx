@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 
-import ResumeFormWrapper from "./resume-form-wrapper";
-import { auth0 } from "@/lib/auth0";
 import { Button } from "@/components/ui/button";
+import { auth0 } from "@/lib/auth0";
+
+import ResumeFormWrapper from "./resume-form-wrapper";
 
 export const metadata: Metadata = {
   title: "Custom Resume Generator | Generate",

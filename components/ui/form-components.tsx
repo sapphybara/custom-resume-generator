@@ -109,7 +109,7 @@ const FormInput = ({
           <FormLabel
             htmlFor={name}
             className={cn(
-              required && "after:content-['*'] after:text-red-500 gap-1"
+              required && "after:content-['*'] after:text-red-500 gap-1",
             )}
           >
             {label}
@@ -154,7 +154,7 @@ const PrefixInput = ({
           <FormLabel
             htmlFor={name}
             className={cn(
-              required && "after:content-['*'] after:text-red-500 gap-1"
+              required && "after:content-['*'] after:text-red-500 gap-1",
             )}
           >
             {label}

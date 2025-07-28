@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { auth0 } from "@/lib/auth0";
+
 import ColorModeToggle from "./color-mode-toggle";
 import {
   NavigationMenu,
@@ -7,7 +9,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "./navigation-menu";
-import { auth0 } from "@/lib/auth0";
 
 const Navbar = async () => {
   const session = await auth0.getSession();

@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import { renderToStream } from "@react-pdf/renderer";
+import { NextRequest, NextResponse } from "next/server";
 import React from "react";
 
 import { ResumePDF } from "@/app/generate/_pdf/generator";
@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
     const stream = await renderToStream(<ResumePDF data={data} />);
     const filename = `${data.name.replace(/\s+/g, "_")}_Resume.pdf`;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return new NextResponse(stream as any, {
       status: 200,
       headers: {
@@ -30,7 +31,7 @@ export async function POST(request: NextRequest) {
     console.error("Error generating PDF:", error);
     return NextResponse.json(
       { error: "Failed to generate PDF" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -12,7 +12,7 @@ type KeyTypeMapping<T> = {
 
 const isT = <T extends object>(
   value: unknown,
-  keyMappings: KeyTypeMapping<T>
+  keyMappings: KeyTypeMapping<T>,
 ): value is T => {
   if (value === null || typeof value !== "object") {
     return false;
@@ -20,7 +20,7 @@ const isT = <T extends object>(
 
   const obj = value as { [key: string]: unknown };
   return Object.entries(keyMappings).every(
-    ([key, expectedType]) => key in obj && typeof obj[key] === expectedType
+    ([key, expectedType]) => key in obj && typeof obj[key] === expectedType,
   );
 };
 
