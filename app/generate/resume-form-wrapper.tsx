@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/ui/loading";
 import useResumeForm from "@/hooks/use-form-data";
 
 import ResumeForm from "./resume-form";
@@ -17,9 +18,7 @@ export default function ResumeFormWrapper() {
   } = useResumeForm();
 
   return form.formState.isLoading ? (
-    <div className="flex items-center justify-center min-h-[400px] w-full">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white"></div>
-    </div>
+    <Loading />
   ) : (
     <div className="flex gap-4 isolate">
       <ResumeFormPreview control={form.control} />
