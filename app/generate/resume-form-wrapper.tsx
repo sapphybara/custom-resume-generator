@@ -1,6 +1,6 @@
 "use client";
 
-import Loading from "@/components/ui/loading";
+import Loading from "@/app/loading";
 import useResumeForm from "@/hooks/use-form-data";
 
 import ResumeForm from "./resume-form";
