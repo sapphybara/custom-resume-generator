@@ -61,7 +61,7 @@ const InputFormControl = ({
     <FormControl>
       <div className="relative">
         {hasPrefix && (
-          <span className="absolute left-3 top-[52%] transform -translate-y-1/2 text-gray-400 text-sm select-none">
+          <span className="absolute left-3 top-[52%] transform -translate-y-1/2 text-gray-500 dark:text-gray-400 text-sm select-none">
             {prefix}
           </span>
         )}
