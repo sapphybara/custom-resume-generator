@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import { lato, merriweatherSans } from "@/styles/fonts";
 
 export const metadata: Metadata = {
-  title: "Custom Resume Generator - ATS-Friendly Resume Builder",
+  title: "Custom Resume Generator | ATS-Friendly Resume Builder",
   description:
     "Smart resume generator that abstracts formatting logic for ATS optimization. Create professional resumes with intelligent section management and customizable layouts. Built for job seekers who want to focus on content, not formatting.",
   keywords:
