@@ -6,8 +6,8 @@
   "website": "https://www.sapphyra.dev",
   "linkedin": "sapphyra-wiser",
   "pronouns": "she/her",
-  "summary": "Creative and driven Front End Developer with a strong foundation in both design and development, and a passion for both. Thrives in collaborative environments - and on the volleyball court.",
-  "skills": "Angular, React, JavaScript/ES6+, TypeScript, CSS3/HTML5, Responsive Design, Node.js, Python, MySQL, OOP, Unit Testing, Pytest, Jest, Git/GitLab/Bitbucket, AWS Amplify, UI/UX Design, Figma, Adobe XD, Agile/SCRUM, WCAG 2.x",
+  "summary": "Full-Stack Software Engineer skilled in JavaScript/TypeScript, React, Node.js, Python, and modern frameworks, combining technical depth and design expertise to build responsive, scalable applications. Experienced in databases, cloud deployment, and testing; adept at UI/UX design with Figma and Adobe Creative Suite, and thrives in collaborative teams delivering high-impact solutions.",
+  "skills": "React, Node.js, Python, JavaScript/ES6+, TypeScript, HTML5, CSS3, UI/UX Design, Responsive Web Design, Figma, Git & Version Control, Agile/SCRUM, Unit/E2E Testing, AWS Amplify, SEO & Site Optimization",
   "experiences": [
     {
       "jobTitle": "Freelance Web Developer",
@@ -32,7 +32,7 @@
     },
     {
       "jobTitle": "Undergrad Research Assistant",
-      "company": "Ut Austin Nuclear Engineering Teaching Lab",
+      "company": "UT Austin Nuclear Engineering Teaching Lab",
       "startDate": "June 2018",
       "endDate": "November 2020",
       "jobDescription": "Led software development for outdoor air samplers, using Python, Django, JavaScript, and HTML/CSS to build a Django-based server for local result processing.\nWorked with a multidisciplinary undergraduate team across the sciences, contributing to a successful field test that informed further development by collaborators at a national lab. Later co-authored a publication detailing the system's methodology."
