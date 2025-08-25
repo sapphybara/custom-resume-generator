@@ -6,5 +6,6 @@ export const stackServerApp = new StackServerApp({
   tokenStore: "nextjs-cookie",
   urls: {
     afterSignIn: "/generate",
+    accountSettings: "/account-settings",
   },
 });
