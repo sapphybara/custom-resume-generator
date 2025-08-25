@@ -33,7 +33,6 @@ const eslintConfig = [
     rules: {
       "semi": ["error", "always"],
       "quotes": ["error", "double", { "avoidEscape": true }],
-      "comma-dangle": ["error", "always-multiline"],
 
       "@typescript-eslint/no-unused-vars": [
         "error",
