@@ -5,7 +5,9 @@ import { stackServerApp } from "./stack";
 export async function middleware(request: NextRequest) {
   const user = await stackServerApp.getUser();
   if (!user) {
-    return NextResponse.redirect(new URL("/handler/sign-in", request.url));
+    return NextResponse.redirect(
+      new URL(stackServerApp.urls.signIn, request.url)
+    );
   }
   return NextResponse.next();
 }
