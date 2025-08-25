@@ -1,3 +1,4 @@
+import { UserButton } from "@stackframe/stack";
 import Link from "next/link";
 
 import { stackServerApp } from "@/stack";
@@ -37,13 +38,7 @@ const Navbar = async () => {
               <Link href="/generate">Generate</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          {user && (
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <a href={stackServerApp.urls.signOut}>Log Out</a>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          )}
+          {user && <UserButton />}
         </NavigationMenuList>
       </div>
     </NavigationMenu>
