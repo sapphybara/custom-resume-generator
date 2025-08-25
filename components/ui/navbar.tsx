@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { auth0 } from "@/lib/auth0";
+import { stackServerApp } from "@/stack";
 
 import ColorModeToggle from "./color-mode-toggle";
 import {
@@ -11,7 +11,7 @@ import {
 } from "./navigation-menu";
 
 const Navbar = async () => {
-  const session = await auth0.getSession();
+  const user = await stackServerApp.getUser();
 
   return (
     <NavigationMenu
@@ -37,10 +37,10 @@ const Navbar = async () => {
               <Link href="/generate">Generate</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          {session && (
+          {user && (
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <a href="/auth/logout">Log Out</a>
+                <a href={stackServerApp.urls.signOut}>Log Out</a>
               </NavigationMenuLink>
             </NavigationMenuItem>
           )}

@@ -1,9 +1,11 @@
+import { StackProvider, StackTheme } from "@stackframe/stack";
 import type { Metadata } from "next";
 
 import "./globals.css";
 import Footer from "@/components/ui/footer";
 import Navbar from "@/components/ui/navbar";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { stackServerApp } from "@/stack";
 import { lato, merriweatherSans } from "@/styles/fonts";
 
 export const metadata: Metadata = {
@@ -48,18 +50,22 @@ export default function RootLayout({
       <body
         className={`${merriweatherSans.variable} ${lato.variable} h-lvh flex flex-col w-full relative max-w-[1200px]`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <div className="flex flex-col justify-between flex-1 overflow-y-auto">
-            <main className="flex flex-col flex-1">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <StackProvider app={stackServerApp}>
+          <StackTheme>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+              <div className="flex flex-col justify-between flex-1 overflow-y-auto">
+                <main className="flex flex-col flex-1">{children}</main>
+                <Footer />
+              </div>
+            </ThemeProvider>
+          </StackTheme>
+        </StackProvider>
       </body>
     </html>
   );
