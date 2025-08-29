@@ -1,4 +1,4 @@
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import {
   authenticatedRole,
   authUid,
@@ -31,12 +31,6 @@ export const resumes = pgTable(
   ]
 );
 
-export const resumesRelations = relations(resumes, ({ many }) => ({
-  experiences: many(experiences),
-  educations: many(educations),
-  skills: many(skills),
-}));
-
 export const experiences = pgTable(
   "experiences",
   {
@@ -64,13 +58,6 @@ export const experiences = pgTable(
     }),
   ]
 );
-
-export const experiencesRelations = relations(experiences, ({ one }) => ({
-  resume: one(resumes, {
-    fields: [experiences.resumeId],
-    references: [resumes.id],
-  }),
-}));
 
 export const educations = pgTable(
   "education",
@@ -100,13 +87,6 @@ export const educations = pgTable(
   ]
 );
 
-export const educationsRelations = relations(educations, ({ one }) => ({
-  resume: one(resumes, {
-    fields: [educations.resumeId],
-    references: [resumes.id],
-  }),
-}));
-
 export const skills = pgTable(
   "skills",
   {
@@ -130,10 +110,3 @@ export const skills = pgTable(
     }),
   ]
 );
-
-export const skillsRelations = relations(skills, ({ one }) => ({
-  resume: one(resumes, {
-    fields: [skills.resumeId],
-    references: [resumes.id],
-  }),
-}));
