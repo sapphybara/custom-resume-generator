@@ -5,12 +5,12 @@ import {
   crudPolicy,
   usersSync,
 } from "drizzle-orm/neon";
-import { date, integer, pgTable, serial, text } from "drizzle-orm/pg-core";
+import { date, integer, pgTable, text } from "drizzle-orm/pg-core";
 
 export const resumes = pgTable(
   "resumes",
   {
-    id: serial("id").primaryKey(),
+    id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
     userId: text("user_id")
       .references(() => usersSync.id, { onDelete: "cascade" })
       .notNull(),
@@ -34,7 +34,7 @@ export const resumes = pgTable(
 export const experiences = pgTable(
   "experiences",
   {
-    id: serial("id").primaryKey(),
+    id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
     resumeId: integer("resume_id")
       .references(() => resumes.id, { onDelete: "cascade" })
       .notNull(),
@@ -62,7 +62,7 @@ export const experiences = pgTable(
 export const educations = pgTable(
   "education",
   {
-    id: serial("id").primaryKey(),
+    id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
     resumeId: integer("resume_id")
       .references(() => resumes.id, { onDelete: "cascade" })
       .notNull(),
@@ -90,7 +90,7 @@ export const educations = pgTable(
 export const skills = pgTable(
   "skills",
   {
-    id: serial("id").primaryKey(),
+    id: integer("id").generatedAlwaysAsIdentity().primaryKey(),
     resumeId: integer("resume_id")
       .references(() => resumes.id, { onDelete: "cascade" })
       .notNull(),
