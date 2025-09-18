@@ -14,7 +14,7 @@
       "company": "Self-Employed",
       "startDate": "April 2024",
       "endDate": "Present",
-      "jobDescription": "Collaborated with clients in consulting industries, designing and developing custom websites with a focus on accessibility, responsive design, and SEO & site optimization.\nLed the complete branding, design, and front-end development for outlastpower.com, an energy startup focused on bringing battery storage to underserved commercial facilities. Created a tailored Squarespace site balancing technical credibility with accessibility, involving full-stack planning from typography and LESS customization to image licensing, site SEO, and content hierarchy. Developed a bold UI with responsive layout and a black and yellow color scheme that resonates with their target audience of blue-collar commercial facility owners.\nDeveloped mitokhon.com for MitoKhon, a consultancy advancing health equity and social justice across healthcare systems. Built the site in WordPress using Breakdance and custom CSS. Extended the initial Figma designs of three core pages into ten fully responsive, accessible layouts. Delivered ahead of schedule and under budget, earning praise from the client, designer, and project manager for clean implementation and seamless user experience.\nOptimized SEO and performance for Enoch & Co, a real estate advisory firm. Minified images, streamlined code, and implemented SEO strategies."
+      "jobDescription": "Collaborated with clients in consulting industries, designing and developing custom websites with a focus on accessibility, responsive design, and SEO & site optimization.\nLed branding, design, and front-end development for outlastpower.com, an energy startup. Built a tailored Squarespace site with custom styling, responsive layouts, and SEO optimization, creating a bold, accessible UI that resonated with their target audience.\nDeveloped mitokhon.com for MitoKhon, a consultancy advancing health equity and social justice across healthcare systems. Built the site in WordPress using Breakdance and custom CSS. Extended the initial Figma designs of three core pages into ten fully responsive, accessible layouts. Delivered ahead of schedule and under budget, earning praise from the client, designer, and project manager for clean implementation and seamless user experience.\nOptimized SEO and performance for Enoch & Co, a real estate advisory firm. Minified images, streamlined code, and implemented SEO strategies."
     },
     {
       "jobTitle": "Full Stack Developer",
@@ -42,17 +42,8 @@
     {
       "degree": "BS Mathematics",
       "institution": "University of Texas at Austin",
-      "year": "2023"
-    },
-    {
-      "degree": "Certificate in Computer Science",
-      "institution": "University of Texas at Austin",
-      "year": "2022"
-    },
-    {
-      "degree": "AS Mathematics",
-      "institution": "Austin Community College",
-      "year": "2019"
+      "year": "2023",
+      "details": "Certificate in Computer Science from UTCS"
     }
   ]
 }
