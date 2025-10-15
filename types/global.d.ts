@@ -2,6 +2,7 @@ import type { Control } from "react-hook-form";
 
 declare global {
   interface Experience {
+    id: number;
     jobTitle: string;
     company: string;
     startDate: string;
@@ -10,6 +11,7 @@ declare global {
   }
 
   interface Education {
+    id: number;
     degree: string;
     institution: string;
     year: string;
@@ -17,6 +19,7 @@ declare global {
   }
 
   interface ResumeData {
+    id: number;
     name: string;
     email: string;
     phone?: string;
@@ -37,4 +40,7 @@ declare global {
   interface PropsWithClassName {
     className?: string;
   }
+
+  type ArrayElementLookupType<T extends readonly unknown[]> =
+    T extends readonly (infer U)[] ? U : never;
 }

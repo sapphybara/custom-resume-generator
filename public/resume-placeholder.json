@@ -1,4 +1,5 @@
 {
+  "id": 0,
   "name": "Sapphyra Wiser",
   "email": "sapphyra.wiser@gmail.com",
   "phone": "720-839-7618",
@@ -10,6 +11,7 @@
   "skills": "React, Node.js, Python, JavaScript/ES6+, TypeScript, HTML5, CSS3, UI/UX Design, Responsive Web Design, Figma, Git & Version Control, Agile/SCRUM, Unit/E2E Testing, AWS Amplify, SEO & Site Optimization",
   "experiences": [
     {
+      "id": 0,
       "jobTitle": "Freelance Web Developer",
       "company": "Self-Employed",
       "startDate": "April 2024",
@@ -17,6 +19,7 @@
       "jobDescription": "Collaborated with clients in consulting industries, designing and developing custom websites with a focus on accessibility, responsive design, and SEO & site optimization.\nLed branding, design, and front-end development for outlastpower.com, an energy startup. Built a tailored Squarespace site with custom styling, responsive layouts, and SEO optimization, creating a bold, accessible UI that resonated with their target audience.\nDeveloped mitokhon.com for MitoKhon, a consultancy advancing health equity and social justice across healthcare systems. Built the site in WordPress using Breakdance and custom CSS. Extended the initial Figma designs of three core pages into ten fully responsive, accessible layouts. Delivered ahead of schedule and under budget, earning praise from the client, designer, and project manager for clean implementation and seamless user experience.\nOptimized SEO and performance for Enoch & Co, a real estate advisory firm. Minified images, streamlined code, and implemented SEO strategies."
     },
     {
+      "id": 1,
       "jobTitle": "Full Stack Developer",
       "company": "Pacific Northwest National Laboratory",
       "startDate": "February 2021",
@@ -24,6 +27,7 @@
       "jobDescription": "Worked closely with cross-functional teams to develop interactive, data-driven visualization platforms for scientific collaboration. Utilized expertise in Angular, React, TypeScript, and Python to contribute to the creation of cutting-edge solutions tailored to meet project requirements.\nTook ownership of UI design for a key project, creating a feature that helped secure an additional $50K in funding. Anticipated needs ahead of client demos to polish the product, resolving last-minute bugs and shipping features under pressure to ensure a seamless, high-quality presentation.\nPlayed a key role in improving code quality, reducing technical debt, and mentoring junior staff members, fostering a collaborative and growth-oriented work environment."
     },
     {
+      "id": 2,
       "jobTitle": "Web Development Intern",
       "company": "Pacific Northwest National Laboratory",
       "startDate": "April 2020",
@@ -31,6 +35,7 @@
       "jobDescription": "Contributed to the early development of a React-based data visualization tool, implementing core logic and structure based on design mockups.\nSupported technical decision-making by researching and recommending charting libraries, including the team's eventual adoption of D3.js."
     },
     {
+      "id": 3,
       "jobTitle": "Undergrad Research Assistant",
       "company": "UT Austin Nuclear Engineering Teaching Lab",
       "startDate": "June 2018",
@@ -40,6 +45,7 @@
   ],
   "education": [
     {
+      "id": 0,
       "degree": "BS Mathematics",
       "institution": "University of Texas at Austin",
       "year": "2023",

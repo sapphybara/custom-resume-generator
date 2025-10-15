@@ -100,7 +100,6 @@ export default function ResumeForm({
             />
           </GridContainer>
         </Section>
-
         {/* Professional Summary Section */}
         <Section title="Professional Summary">
           <FormTextArea
@@ -110,7 +109,6 @@ export default function ResumeForm({
             rows={4}
           />
         </Section>
-
         {/* Skills Section */}
         <Section title="Skills">
           <FormInput
@@ -120,7 +118,6 @@ export default function ResumeForm({
             required
           />
         </Section>
-
         {/* Experience Section */}
         <Section title="Experience">
           <div className="space-y-6">
@@ -144,7 +141,6 @@ export default function ResumeForm({
                     </Button>
                   )}
                 </div>
-
                 <GridContainer>
                   <FormInput
                     name={`experiences.${index}.jobTitle`}
@@ -175,7 +171,6 @@ export default function ResumeForm({
                     required
                   />
                 </GridContainer>
-
                 <div className="mt-4">
                   <FormTextArea
                     name={`experiences.${index}.jobDescription`}
@@ -195,7 +190,6 @@ export default function ResumeForm({
             </div>
           </div>
         </Section>
-
         {/* Education Section */}
         <Section title="Education">
           <div className="space-y-6">
@@ -217,7 +211,6 @@ export default function ResumeForm({
                     </Button>
                   )}
                 </div>
-
                 <GridContainer>
                   <FormInput
                     name={`education.${index}.degree`}
@@ -238,7 +231,6 @@ export default function ResumeForm({
                     required
                   />
                 </GridContainer>
-
                 <div className="mt-4">
                   <FormTextArea
                     name={`education.${index}.details`}
@@ -249,7 +241,6 @@ export default function ResumeForm({
                 </div>
               </div>
             ))}
-
             <div className="text-center">
               <Button type="button" onClick={addEducation} variant="outline">
                 Add Another Education
@@ -257,7 +248,6 @@ export default function ResumeForm({
             </div>
           </div>
         </Section>
-
         {/* Submit Button */}
         <div className="flex justify-center pt-6">
           <Button type="submit" size="lg">

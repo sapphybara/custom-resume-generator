@@ -47,9 +47,14 @@ const useResumeForm = () => {
     name: "education",
   });
 
+  const generateIdFromList = (list: { id: number }[]) => {
+    return list.length > 0 ? list[list.length - 1].id + 1 : 0;
+  };
+
   // Helper functions to add new entries
   const addExperience = () => {
     appendExperience({
+      id: generateIdFromList(experienceFields),
       jobTitle: "",
       company: "",
       startDate: "",
@@ -58,8 +63,13 @@ const useResumeForm = () => {
     });
   };
 
+  const setExperience = (experiences: Experience[]) => {
+    form.setValue("experiences", experiences);
+  };
+
   const addEducation = () => {
     appendEducation({
+      id: generateIdFromList(educationFields),
       degree: "",
       institution: "",
       year: "",
@@ -67,13 +77,19 @@ const useResumeForm = () => {
     });
   };
 
+  const setEducation = (education: Education[]) => {
+    form.setValue("education", education);
+  };
+
   return {
     form,
     experienceFields,
     addExperience,
+    setExperience,
     removeExperience,
     educationFields,
     addEducation,
+    setEducation,
     removeEducation,
   };
 };
