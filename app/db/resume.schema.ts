@@ -52,7 +52,7 @@ export const experiences = pgTable(
       read: sql`${table.resumeId} IN (SELECT id FROM resumes WHERE ${authUid(
         resumes.userId
       )})`,
-      modify: sql`resumeId IN (SELECT id FROM resumes WHERE ${authUid(
+      modify: sql`${table.resumeId} IN (SELECT id FROM resumes WHERE ${authUid(
         resumes.userId
       )})`,
     }),
@@ -80,7 +80,7 @@ export const educations = pgTable(
       read: sql`${table.resumeId} IN (SELECT id FROM resumes WHERE ${authUid(
         resumes.userId
       )})`,
-      modify: sql`resumeId IN (SELECT id FROM resumes WHERE ${authUid(
+      modify: sql`${table.resumeId} IN (SELECT id FROM resumes WHERE ${authUid(
         resumes.userId
       )})`,
     }),
@@ -104,7 +104,7 @@ export const skills = pgTable(
       read: sql`${table.resumeId} IN (SELECT id FROM resumes WHERE ${authUid(
         resumes.userId
       )})`,
-      modify: sql`resumeId IN (SELECT id FROM resumes WHERE ${authUid(
+      modify: sql`${table.resumeId} IN (SELECT id FROM resumes WHERE ${authUid(
         resumes.userId
       )})`,
     }),
