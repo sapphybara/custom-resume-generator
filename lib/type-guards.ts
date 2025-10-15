@@ -26,6 +26,7 @@ const isT = <T extends object>(
 
 export const isExperience = (experience: unknown): experience is Experience =>
   isT<Experience>(experience, {
+    id: "number",
     jobTitle: "string",
     company: "string",
     startDate: "string",
@@ -35,6 +36,7 @@ export const isExperience = (experience: unknown): experience is Experience =>
 
 export const isEducation = (education: unknown): education is Education =>
   isT<Education>(education, {
+    id: "number",
     degree: "string",
     institution: "string",
     year: "string",
