@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import {
   GridContainer,
-  PrefixInput,
   FormInput,
   FormTextArea,
 } from "@/components/ui/form-components";
@@ -92,7 +91,7 @@ export default function ResumeForm({
               label="Website"
               placeholder="https://yourwebsite.com"
             />
-            <PrefixInput
+            <FormInput
               name="linkedin"
               label="LinkedIn"
               prefix="linkedin.com/in/"

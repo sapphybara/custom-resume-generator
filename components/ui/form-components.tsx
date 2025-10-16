@@ -1,5 +1,5 @@
 import { MoveUpRightIcon } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ControllerRenderProps,
   FieldValues,
@@ -25,6 +25,7 @@ interface FormInputProps {
   type?: string;
   className?: string;
   required?: boolean;
+  prefix?: string;
 }
 
 interface InputFormControlProps extends Omit<FormInputProps, "label" | "type"> {
@@ -49,26 +50,41 @@ const InputFormControl = ({
   prefix,
   ...props
 }: InputFormControlProps) => {
+  const prefixRef = useRef<null | HTMLSpanElement>(null);
+  const [paddingLeft, setPaddingLeft] = useState<string | undefined>(undefined);
   const hasPrefix = Boolean(prefix);
-  let urlToShow: string | undefined;
-  if (name === "linkedin") {
-    urlToShow = `https://www.linkedin.com/in/${field.value}`;
-  } else if (isValidURL(field.value)) {
-    urlToShow = field.value;
-  }
+  const urlToShow = hasPrefix
+    ? `https://www.${prefix}/${field.value}`
+    : isValidURL(field.value)
+    ? field.value
+    : undefined;
+
+  useEffect(() => {
+    const prefixWidth = prefixRef.current?.offsetWidth;
+    if (
+      prefixWidth != null &&
+      prefixWidth !== parseInt(paddingLeft?.split("+")[1] || "")
+    ) {
+      // adds rendered width to the existent inline spacing on the inputs
+      setPaddingLeft(`calc(var(--spacing) * 3 + ${prefixWidth}px)`);
+    }
+  }, [paddingLeft]);
 
   return (
     <FormControl>
       <div className="relative">
         {hasPrefix && (
-          <span className="absolute left-3 top-[52%] transform -translate-y-1/2 text-gray-500 dark:text-gray-400 text-sm select-none">
+          <span
+            className="absolute left-3 top-[52%] transform -translate-y-1/2 text-gray-500 dark:text-gray-400 text-sm select-none"
+            ref={prefixRef}
+          >
             {prefix}
           </span>
         )}
         <Input
           id={name}
           placeholder={placeholder}
-          className={cn(hasPrefix && "pl-28")}
+          style={{ paddingLeft }}
           {...field}
           {...props}
         />
@@ -96,6 +112,7 @@ const FormInput = ({
   type = "text",
   className,
   required,
+  prefix,
   ...props
 }: FormInputProps) => {
   const form = useFormContext();
@@ -109,7 +126,7 @@ const FormInput = ({
           <FormLabel
             htmlFor={name}
             className={cn(
-              required && "after:content-['*'] after:text-red-500 gap-1",
+              required && "after:content-['*'] after:text-red-500 gap-1"
             )}
           >
             {label}
@@ -117,55 +134,10 @@ const FormInput = ({
           <InputFormControl
             name={name}
             type={type}
-            placeholder={placeholder}
-            required={required}
-            field={field}
-            {...props}
-          />
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-};
-
-interface PrefixInputProps extends FormInputProps {
-  prefix: string;
-}
-
-const PrefixInput = ({
-  name,
-  label,
-  placeholder,
-  prefix,
-  className,
-  required,
-  type = "text",
-  ...props
-}: PrefixInputProps) => {
-  const form = useFormContext();
-
-  return (
-    <FormField
-      control={form.control}
-      name={name}
-      render={({ field }) => (
-        <FormItem className={className}>
-          <FormLabel
-            htmlFor={name}
-            className={cn(
-              required && "after:content-['*'] after:text-red-500 gap-1",
-            )}
-          >
-            {label}
-          </FormLabel>
-          <InputFormControl
-            field={field}
-            name={name}
             placeholder={placeholder}
             prefix={prefix}
-            type={type}
             required={required}
+            field={field}
             {...props}
           />
           <FormMessage />
@@ -261,4 +233,4 @@ const GridContainer: React.FC<GridContainerProps> = ({
   return <div className={cn(gridClasses, className)}>{children}</div>;
 };
 
-export { FormInput, PrefixInput, FormTextArea, GridContainer };
+export { FormInput, FormTextArea, GridContainer };
