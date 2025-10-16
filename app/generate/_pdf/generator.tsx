@@ -15,7 +15,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
       contacts.push(
         <Text key="location" style={styles.contactItem}>
           🏠 {data.location}
-        </Text>,
+        </Text>
       );
     }
 
@@ -27,7 +27,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
           style={styles.contactLink}
         >
           <Text style={styles.contactItem}>📧 {data.email}</Text>
-        </Link>,
+        </Link>
       );
     }
 
@@ -35,7 +35,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
       contacts.push(
         <Link key="phone" src={`tel:${data.phone}`} style={styles.contactLink}>
           <Text style={styles.contactItem}>📞 {data.phone}</Text>
-        </Link>,
+        </Link>
       );
     }
 
@@ -49,7 +49,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
           <Text style={styles.contactItem}>
             🔗 linkedin.com/in/{data.linkedin.replace(linkedInRegexURL, "")}
           </Text>
-        </Link>,
+        </Link>
       );
     }
 
@@ -62,7 +62,21 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
           <Text style={styles.contactItem}>
             🌐 {data.website.replace(/^https?:\/\//, "")}
           </Text>
-        </Link>,
+        </Link>
+      );
+    }
+
+    if (data.github) {
+      const githubRegexURL = /^https?:\/\/(www\.)?github\.com\//;
+      const githubUrl = githubRegexURL.test(data.github)
+        ? data.github
+        : `https://github.com/${data.github}`;
+      contacts.push(
+        <Link key="github" src={githubUrl} style={styles.contactLink}>
+          <Text style={styles.contactItem}>
+            👩‍💻 github.com/{data.github.replace(githubRegexURL, "")}
+          </Text>
+        </Link>
       );
     }
 
@@ -70,7 +84,7 @@ export const ResumePDF = ({ data }: ResumePDFProps) => {
       contacts.push(
         <Text key="pronouns" style={styles.contactItem}>
           👤 {data.pronouns}
-        </Text>,
+        </Text>
       );
     }
 

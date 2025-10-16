@@ -26,6 +26,7 @@ declare global {
     location?: string;
     website?: string;
     linkedin?: string;
+    github?: string;
     pronouns?: string;
     summary?: string;
     skills: string;

@@ -38,6 +38,8 @@ const InformationList = <T extends Experience | Education>({
 const formatKey = (key: string) => {
   if (key === "linkedin") {
     return "🔗linkedin.com/in/";
+  } else if (key === "github") {
+    return "👩‍💻github.com/";
   } else if (key === "pronouns") {
     return "";
   } else if (key in EMOJI_MAP) {
@@ -104,6 +106,7 @@ export default function ResumeFormPreview({ control }: PropsWithControl) {
     "phone",
     "linkedin",
     "website",
+    "github",
   ] as const;
 
   const contactValues = contactFields

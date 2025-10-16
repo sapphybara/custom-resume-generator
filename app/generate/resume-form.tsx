@@ -97,6 +97,12 @@ export default function ResumeForm({
               prefix="linkedin.com/in/"
               placeholder="username"
             />
+            <FormInput
+              name="github"
+              label="GitHub"
+              prefix="github.com/"
+              placeholder="sapphybara"
+            />
           </GridContainer>
         </Section>
         {/* Professional Summary Section */}
